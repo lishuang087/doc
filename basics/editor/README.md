@@ -1,7 +1,5 @@
 ---
-description: >-
-  This section contains detailed usage examples and best practices for the
-  FlashBlock API.
+description: 这里包含了 FlashBlock API 的详细使用示例和最佳实践。
 icon: user-check
 layout:
   width: default
@@ -19,20 +17,20 @@ layout:
     visible: true
 ---
 
-# Usage Examples
+# 使用示例
 
 ***
 
-## <mark style="color:$success;">Documentation List</mark> <a href="#documentation-list" id="documentation-list"></a>
+## <mark style="color:$success;">文档列表</mark> <a href="#documentation-list" id="documentation-list"></a>
 
-* [Tip Address Usage Examples](tip-address-usage-examples.md) - How to include tip address in transactions
-* [Transaction Optimization Guide](transaction-optimization-guide.md) - Transaction optimization best practices
+* [小费地址使用示例](xiao-fei-di-zhi-shi-yong-shi-li.md) - 如何在交易中包含小费地址
+* [交易优化指南](jiao-yi-you-hua-zhi-nan.md) - 交易优化最佳实践
 
 ***
 
-## <mark style="color:$success;">Quick Start</mark> <a href="#quick-start" id="quick-start"></a>
+## <mark style="color:$success;">快速开始</mark> <a href="#quick-start" id="quick-start"></a>
 
-#### Basic Example <a href="#basic-example" id="basic-example"></a>
+#### 基础示例 <a href="#basic-example" id="basic-example"></a>
 
 {% code lineNumbers="true" %}
 ```typescript
@@ -53,7 +51,7 @@ const response = await axios.post(
 ```
 {% endcode %}
 
-#### Advanced Example <a href="#advanced-example" id="advanced-example"></a>
+#### 高级示例 <a href="#advanced-example" id="advanced-example"></a>
 
 {% code lineNumbers="true" %}
 ```typescript
@@ -74,13 +72,11 @@ const body = {
 
 ***
 
-## <mark style="color:$success;">Best Practices</mark> <a href="#best-practices" id="best-practices"></a>
+## <mark style="color:$success;">最佳实践</mark> <a href="#best-practices" id="best-practices"></a>
 
+1. **错误处理**: 始终实现适当的错误处理机制
+2. **重试策略**: 使用指数退避重试策略
+3. **监控**: 监控交易状态和错误率
+4. **优化**: 根据网络条件调整优先级费用
 
-
-1. **Error Handling**: Always implement appropriate error handling mechanisms
-2. **Retry Strategy**: Use exponential backoff retry strategies
-3. **Monitoring**: Monitor transaction status and error rates
-4. **Optimization**: Adjust priority fees based on network conditions
-
-For more detailed information, please refer to the individual example documents.
+更多详细信息请查看各个示例文档。

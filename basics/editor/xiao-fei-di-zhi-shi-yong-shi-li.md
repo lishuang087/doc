@@ -16,25 +16,25 @@ layout:
     visible: true
 ---
 
-# Tip Address Usage Examples
+# 小费地址使用示例
 
 ***
 
-## <mark style="color:$success;">Functionality Overview</mark> <a href="#functionality-overview" id="functionality-overview"></a>
+## <mark style="color:$success;">功能概述</mark> <a href="#functionality-overview" id="functionality-overview"></a>
 
-The system will check for the presence of our tip address in submitted transactions and will return an error if it's not found. This document provides an example of how to incorporate the tip address directly into your original transaction (recommended approach).
-
-***
-
-## <mark style="color:$success;">Implementation Steps</mark> <a href="#implementation-steps" id="implementation-steps"></a>
-
-1. First, obtain a random tip address from the `/api/v2/randomTipAddress` endpoint
-2. Include the tip transfer directly in your original transaction
-3. Submit the single transaction with integrated tip to the batch submission endpoint
+系统将检查提交的交易中是否存在我们的小费地址，如果未找到将返回错误。本文档提供了如何将小费地址直接整合到您的原交易中的示例（推荐方式）。
 
 ***
 
-## <mark style="color:$success;">Code Example (Transfer Example)</mark> <a href="#code-example-transfer-example" id="code-example-transfer-example"></a>
+## <mark style="color:$success;">实现步骤</mark> <a href="#implementation-steps" id="implementation-steps"></a>
+
+1. 首先，从 `/api/v2/randomTipAddress` 端点获取随机小费地址
+2. 将小费转账直接包含在您的原交易中
+3. 将包含集成小费的单笔交易提交到批量提交端点
+
+***
+
+## <mark style="color:$success;">代码示例 (转账示例)</mark> <a href="#code-example-transfer-example" id="code-example-transfer-example"></a>
 
 {% code lineNumbers="true" %}
 ```javascript

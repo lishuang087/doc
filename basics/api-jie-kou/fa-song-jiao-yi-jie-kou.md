@@ -16,33 +16,31 @@ layout:
     visible: true
 ---
 
-# Send-Transaction
+# 发送交易接口
 
 ***
 
-## <mark style="color:$success;">Overview</mark> <a href="#overview" id="overview"></a>
+## <mark style="color:$success;">概述</mark> <a href="#overview" id="overview"></a>
 
-The Send Transaction API provides two formats for submitting Solana transactions: standard JSON-RPC 2.0 format and custom REST API format.
-
-***
-
-## <mark style="color:$success;">Service Information</mark> <a href="#service-information" id="service-information"></a>
-
-* **Base URL**: `http://ams.flashblock.trade`
-* **Authentication**: Authorization Header required
-* **Protocol**: HTTP/HTTPS
+发送交易 API 提供两种格式用于提交 Solana 交易：标准的 JSON-RPC 2.0 格式和自定义的 REST API 格式。
 
 ***
 
-## <mark style="color:$success;">API Endpoints</mark> <a href="#api-endpoints" id="api-endpoints"></a>
+## <mark style="color:$success;">服务信息</mark> <a href="#service-information" id="service-information"></a>
 
-### <mark style="color:blue;">1. JSON-RPC Transaction Submission</mark> <a href="#id-1-json-rpc-transaction-submission" id="id-1-json-rpc-transaction-submission"></a>
+* **基础 URL**: `http://ams.flashblock.trade`
+* **认证方式**: 需要 Authorization Header
+* **协议**: HTTP/HTTPS
 
-**POST /**
+***
 
-Submit transactions using JSON-RPC 2.0 specification.
+## <mark style="color:$success;">API 端点</mark> <a href="#api-endpoints" id="api-endpoints"></a>
 
-**Request Format**:
+### <mark style="color:blue;">1. JSON-RPC 交易提交</mark> <a href="#id-1-json-rpc-transaction-submission" id="id-1-json-rpc-transaction-submission"></a>
+
+POST/
+
+使用 JSON-RPC 2.0 规范提交交易。
 
 {% code lineNumbers="true" %}
 ```json
@@ -63,17 +61,17 @@ Submit transactions using JSON-RPC 2.0 specification.
 ```
 {% endcode %}
 
-**Request Parameters**:
+**请求参数说明:**
 
-* `jsonrpc`: Fixed value "2.0"
-* `id`: Request ID for response matching
-* `method`: Fixed value "sendBundle"
-* `params`: Parameter array
-  * `params[0]`: Array of base64-encoded transactions
-  * `params[1]`: Encoding configuration object
-    * `encoding`: Encoding format, fixed as "base64"
+* `jsonrpc`: 固定值 "2.0"
+* `id`: 请求ID，用于匹配响应
+* `method`: 固定值 "sendBundle"
+* `params`: 参数数组
+  * `params[0]`: base64 编码的交易数组
+  * `params[1]`: 编码配置对象
+    * `encoding`: 编码格式，固定为 "base64"
 
-**Request Headers**:
+&#x20;**请求头：**
 
 {% code lineNumbers="true" %}
 ```
@@ -82,7 +80,7 @@ Authorization: YOUR_API_KEY
 ```
 {% endcode %}
 
-**Success Response**:
+**成功响应：**
 
 {% code lineNumbers="true" %}
 ```json
@@ -94,7 +92,7 @@ Authorization: YOUR_API_KEY
 ```
 {% endcode %}
 
-**Error Response**:
+**错误响应：**
 
 {% code lineNumbers="true" %}
 ```json
@@ -110,21 +108,21 @@ Authorization: YOUR_API_KEY
 ```
 {% endcode %}
 
-**Error Codes**:
+**错误码说明**:
 
-* `-1009`: Missing or invalid Authorization header
-* `-1010`: Transaction length too short or doesn't meet requirements
-* `-1013`: Bundle method setting error, requires sendBundle
+* `-1009`: 缺少或无效的 Authorization 头
+* `-1010`: 交易长度过短或不符合要求
+* `-1013`: Bundle 方法设置错误，需要 sendBundle
 
 ***
 
-### <mark style="color:blue;">2. Custom REST API Transaction Submission</mark> <a href="#id-2-custom-rest-api-transaction-submission" id="id-2-custom-rest-api-transaction-submission"></a>
+### <mark style="color:blue;">2. 自定义 REST API 交易提交</mark> <a href="#id-2-zi-ding-yi-restapi-jiao-yi-ti-jiao" id="id-2-zi-ding-yi-restapi-jiao-yi-ti-jiao"></a>
 
 **POST /api/v2/submit-batch**
 
-Submit transactions using custom REST API format.
+使用自定义 REST API 格式提交交易。
 
-**Request Format**:
+**请求格式**:
 
 {% code lineNumbers="true" %}
 ```json
@@ -137,11 +135,11 @@ Submit transactions using custom REST API format.
 ```
 {% endcode %}
 
-**Request Parameters**:
+**请求参数说明**:
 
 * `transactions`: Array of base64-encoded transactions (optional, defaults to empty array)
 
-**Request Headers**:
+**请求头**:
 
 {% code lineNumbers="true" %}
 ```
@@ -150,7 +148,7 @@ Authorization: YOUR_API_KEY
 ```
 {% endcode %}
 
-**Success Response**:
+**成功响应**:
 
 {% code lineNumbers="true" %}
 ```json
@@ -168,7 +166,7 @@ Authorization: YOUR_API_KEY
 ```
 {% endcode %}
 
-**Error Response**:
+**错误响应**:
 
 {% code lineNumbers="true" %}
 ```json
@@ -183,40 +181,40 @@ Authorization: YOUR_API_KEY
 ```
 {% endcode %}
 
-**Error Codes**:
+**错误码说明**:
 
-* `1009`: Missing or invalid Authorization header
-* `1010`: Transaction length too short or doesn't meet requirements
-
-***
-
-## <mark style="color:$success;">Transaction Limits</mark> <a href="#transaction-limits" id="transaction-limits"></a>
-
-* **Maximum Transactions**: 4 transactions per submission
-* **Transaction Format**: All transactions must be valid base64 encoded
-* **Minimum Tip**: Each transaction must include at least 0.001 SOL tip
+* `1009`: 缺少或无效的 Authorization 头
+* `1010`: 交易长度过短或不符合要求
 
 ***
 
-## <mark style="color:$success;">Best Practices</mark> <a href="#best-practices" id="best-practices"></a>
+## <mark style="color:$success;">交易限制</mark> <a href="#transaction-limits" id="transaction-limits"></a>
 
-Tip Integration Recommendation
-
-**It's recommended to include the tip directly in the original transaction rather than creating a separate tip transaction, regardless of the number of transactions.** This approach:
-
-* Reduces transaction count and complexity
-* Improves transaction success rate
-* Minimizes gas costs
-* Provides better atomicity
-* Ensures consistent transaction ordering
+* **最大交易数**: 单次提交最多 4 笔交易
+* **交易格式**: 所有交易必须是有效的 base64 编码
+* **最小小费**: 每笔交易必须包含至少 0.001 SOL 的小费
 
 ***
 
-## <mark style="color:$success;">Example Code</mark> <a href="#example-code" id="example-code"></a>
+## <mark style="color:$success;">最佳实践</mark> <a href="#best-practices" id="best-practices"></a>
+
+### 小费集成建议 <a href="#xiao-fei-ji-cheng-jian-yi" id="xiao-fei-ji-cheng-jian-yi"></a>
+
+**建议直接在原交易中包含小费，而不是创建单独的小费交易，无论交易数量多少。** 这种方式：
+
+* 减少交易数量和复杂度
+* 提高交易成功率
+* 最小化 gas 成本
+* 提供更好的原子性
+* 确保一致的交易排序
+
+***
+
+## <mark style="color:$success;">示例代码</mark> <a href="#example-code" id="example-code"></a>
 
 #### JavaScript/Node.js <a href="#javascript-node-js" id="javascript-node-js"></a>
 
-**JSON-RPC Format**
+**JSON-RPC 格式**
 
 {% code lineNumbers="true" %}
 ```javascript
@@ -245,7 +243,7 @@ async function submitTransactionRPC(transactions, apiKey) {
 ```
 {% endcode %}
 
-**Custom API Format**
+**自定义 API 格式**
 
 {% code lineNumbers="true" %}
 ```javascript
@@ -268,7 +266,7 @@ async function submitTransactionAPI(transactions, apiKey) {
 
 #### Python <a href="#python" id="python"></a>
 
-**JSON-RPC Format**
+**JSON-RPC 格式**
 
 {% code lineNumbers="true" %}
 ```python
@@ -294,11 +292,11 @@ def submit_transaction_rpc(transactions, api_key):
                            json=payload, 
                            headers=headers)
     
-    return response.json()
+    return response.json()z格式 API Format
 ```
 {% endcode %}
 
-**Custom API Format**
+**自定义 API 格式**
 
 {% code lineNumbers="true" %}
 ```python

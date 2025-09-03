@@ -16,11 +16,11 @@ layout:
     visible: true
 ---
 
-# Error-Codes
+# 错误代码
 
 ***
 
-## <mark style="color:$success;">Error Codes Reference</mark> <a href="#error-codes-reference" id="error-codes-reference"></a>
+## <mark style="color:$success;">错误代码参考</mark> <a href="#error-codes-reference" id="error-codes-reference"></a>
 
 | Error Code | Description                                         |
 | ---------- | --------------------------------------------------- |
@@ -36,11 +36,11 @@ layout:
 
 ***
 
-## <mark style="color:$success;">Important Notes</mark> <a href="#important-notes" id="important-notes"></a>
+## <mark style="color:$success;">重要注意事项</mark> <a href="#important-notes" id="important-notes"></a>
 
-1. Ensure that the `transactions` array includes at least one transaction to the tip address, or validation will fail
-2. Transactions must be correctly encoded in base64 format
-3. Batch submissions have quantity limits; exceeding these limits will result in error code 1007
-4. Before submitting, ensure the wallet has sufficient funds to avoid error code 1003
-5. Once submitted and confirmed, transactions cannot be reversed
-6. The successful response will include a `bundleId` and a list of `transactionIds` for each transaction in the bundle
+1. 确保 `transactions` 数组包含至少一个到小费地址的交易，否则验证将失败
+2. 交易必须正确编码为 base64 格式
+3. 批量提交有数量限制；超出这些限制将导致错误代码 1007
+4. 提交前确保钱包有足够资金以避免错误代码 1003
+5. 一旦提交并确认，交易无法撤销
+6. 成功响应将包含一个 `bundleId` 和每个交易包中交易的 `transactionIds` 列表
